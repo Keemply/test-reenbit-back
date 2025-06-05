@@ -1,14 +1,14 @@
 import mongoose, { model, Schema } from 'mongoose';
 const messageSchema = new Schema({
-  text: { type: String, required: true },
-  timeStamp: { type: Date, default: Date.now },
-  userMessage: { type: Boolean, required: true },
+  text: { type: String },
+  timeStamp: { type: Date },
+  userMessage: { type: Boolean },
 });
 const chatsSchema = new Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    messages: [messageSchema],
+    messages: { type: [messageSchema] },
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'users',

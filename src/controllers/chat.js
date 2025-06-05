@@ -1,4 +1,10 @@
-import { createChat, getChats, updateChat } from '../services/chat.js';
+import {
+  createChat,
+  deleteChat,
+  getChats,
+  updateChat,
+  updateProfile,
+} from '../services/chat.js';
 
 export const createChatController = async (req, res) => {
   const chat = await createChat(req.body, req.user._id);
@@ -25,5 +31,21 @@ export const updateChatController = async (req, res) => {
     status: 200,
     message: 'Chat updated',
     data: updatedChat,
+  });
+};
+export const deleteChatController = async (req, res) => {
+  await deleteChat(req.body);
+  res.json({
+    status: 200,
+    message: 'Chat deleted',
+  });
+};
+export const updateProfileController = async (req, res) => {
+  const date = await updateProfile(req.body);
+
+  res.json({
+    status: 200,
+    message: 'Successfully updated profile',
+    date,
   });
 };
