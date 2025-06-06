@@ -8,7 +8,7 @@ export const updateProfile = async (payload) => {
   if (payload.firstName && payload.firstName !== '') {
     chat.firstName = payload.firstName;
   }
-  if (payload.lastName && payload.firstName !== '') {
+  if (payload.lastName && payload.lastName !== '') {
     chat.lastName = payload.lastName;
   }
   chat.save();
